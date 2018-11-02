@@ -1,4 +1,5 @@
 #!/bin/sh
 set -euf
 docker-compose build tests
-docker-compose run tests
+trap 'docker-compose down' EXIT
+docker-compose run --rm tests
