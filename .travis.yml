@@ -1,0 +1,11 @@
+sudo: required
+
+language: nix
+
+git:
+  quiet: true
+
+services:
+  - docker
+
+script: ./test.sh
