@@ -5,15 +5,15 @@ Feature: Network subcommand
 
         Then it should pass with exactly:
         """
-        version: "2"
+        version: "2.1"
         """
 
     Scenario: Can specify docker compose file version
-        When I run `docker-compose-gen network --compose-version 3.1`
+        When I run `docker-compose-gen network --compose-version 3`
 
         Then it should pass with exactly:
         """
-        version: "3.1"
+        version: "3"
         """
 
     Scenario: Can generate an internal network
@@ -21,7 +21,7 @@ Feature: Network subcommand
 
         Then it should pass with exactly:
         """
-        version: "2"
+        version: "2.1"
         networks:
           foo: {}
         """
@@ -31,7 +31,7 @@ Feature: Network subcommand
 
         Then it should pass with exactly:
         """
-        version: "2"
+        version: "2.1"
         networks:
           foo:
             external:
@@ -43,7 +43,7 @@ Feature: Network subcommand
 
         Then it should pass with exactly:
         """
-        version: "2"
+        version: "2.1"
         networks:
           default:
             external:

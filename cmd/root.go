@@ -44,5 +44,5 @@ var composeVersion string
 
 func init() {
 	rootCmd.PersistentFlags().StringVar(&composeVersion,
-		"compose-version", "2", "Docker compose config version to generate")
+		"compose-version", "2.1", "Docker compose config version to generate (defaults to '2.1')")
 }
