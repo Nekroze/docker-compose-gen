@@ -9,7 +9,7 @@ It can be helpful to replace the default network with an externally defined one 
 `docker-compose-gen` can be used like so to make the default network containers are connected to an already defined network called lab.
 
 ```bash
-docker-compose -f docker-compose.yml -f <(docker-compose-gen network --compose-version 3.1 --external-network lab) up
+docker-compose -f docker-compose.yml -f <(docker-compose-gen network --compose-version 3.1 --external lab) up
 ```
 
 # Installation
@@ -19,7 +19,7 @@ docker-compose -f docker-compose.yml -f <(docker-compose-gen network --compose-v
 You may use the [automated docker image](https://hub.docker.com/r/nekroze/docker-compose-gen) to use `docker-compose-gen` without any other dependencies with the following:
 
 ```bash
-docker run nekroze/docker-compose-gen:latest network --network backchannel
+docker run nekroze/docker-compose-gen:latest network --name backchannel
 ```
 
 ## Go

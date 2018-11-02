@@ -66,7 +66,7 @@ func generateNetworkConfig() (out compose.NetworkConfig) {
 func init() {
 	rootCmd.AddCommand(networkCmd)
 	networkCmd.Flags().StringVar(&networkExternalName,
-		"external-network", "", "Name of the externally defined network, if not given an internal network will be used")
+		"external", "", "Name of the externally defined network, if not given an internal network will be used")
 	networkCmd.Flags().StringVar(&networkName,
-		"network", "default", "Name of the network to generate, defaults to 'default'")
+		"name", "default", "Name of the network to generate, defaults to 'default'")
 }

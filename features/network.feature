@@ -17,7 +17,7 @@ Feature: Network subcommand
         """
 
     Scenario: Can generate an internal network
-        When I run `docker-compose-gen network --network foo`
+        When I run `docker-compose-gen network --name foo`
 
         Then it should pass with exactly:
         """
@@ -27,7 +27,7 @@ Feature: Network subcommand
         """
 
     Scenario: Can generate an external network
-        When I run `docker-compose-gen network --network foo --external-network bar`
+        When I run `docker-compose-gen network --name foo --external bar`
 
         Then it should pass with exactly:
         """
@@ -39,7 +39,7 @@ Feature: Network subcommand
         """
 
     Scenario: Can generate an external network that replaces the default network
-        When I run `docker-compose-gen network --external-network bar`
+        When I run `docker-compose-gen network --external bar`
 
         Then it should pass with exactly:
         """
