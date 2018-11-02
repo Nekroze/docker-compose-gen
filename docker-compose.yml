@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+
+  gen:
+    image: 'nekroze/docker-compose-gen:latest'
+    build:
+      context: .
+      target: final
+    container_name: 'docker-compose-gen'
+
+  tests:
+    image: 'nekroze/docker-compose-gen:test'
+    build:
+      context: .
+      target: test

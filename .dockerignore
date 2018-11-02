@@ -1,0 +1,7 @@
+docker-compose-gen
+.git
+docker-compose.yml
+Dockerfile
+LICENSE
+*.md
+/test.sh
