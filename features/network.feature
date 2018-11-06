@@ -1,7 +1,7 @@
 Feature: Network subcommand
 
     Scenario: By default defines nothing
-        When I run `docker-compose-gen network`
+        When I run `docker-compose-gen network --stdout`
 
         Then it should pass with exactly:
         """
@@ -9,7 +9,7 @@ Feature: Network subcommand
         """
 
     Scenario: Can specify docker compose file version
-        When I run `docker-compose-gen network --compose-version 3`
+        When I run `docker-compose-gen network --stdout --compose-version 3`
 
         Then it should pass with exactly:
         """
@@ -17,7 +17,7 @@ Feature: Network subcommand
         """
 
     Scenario: Can generate an internal network
-        When I run `docker-compose-gen network --name foo`
+        When I run `docker-compose-gen network --stdout --name foo`
 
         Then it should pass with exactly:
         """
@@ -27,7 +27,7 @@ Feature: Network subcommand
         """
 
     Scenario: Can generate an external network
-        When I run `docker-compose-gen network --name foo --external bar`
+        When I run `docker-compose-gen network --stdout --name foo --external bar`
 
         Then it should pass with exactly:
         """
@@ -39,7 +39,7 @@ Feature: Network subcommand
         """
 
     Scenario: Can generate an external network that replaces the default network
-        When I run `docker-compose-gen network --external bar`
+        When I run `docker-compose-gen network --stdout --external bar`
 
         Then it should pass with exactly:
         """

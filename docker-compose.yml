@@ -8,6 +8,8 @@ services:
       context: .
       target: final
     container_name: 'docker-compose-gen'
+    volumes:
+      - /tmp:/tmp
 
   tests:
     image: 'nekroze/docker-compose-gen:test'

@@ -41,8 +41,11 @@ func Execute() {
 }
 
 var composeVersion string
+var writeToStdout bool
 
 func init() {
 	rootCmd.PersistentFlags().StringVar(&composeVersion,
 		"compose-version", "2.1", "Docker compose config version to generate (defaults to '2.1')")
+	rootCmd.PersistentFlags().BoolVar(&writeToStdout,
+		"stdout", false, "Write the yaml config directly to stdout instead of writing a temporary file name")
 }
