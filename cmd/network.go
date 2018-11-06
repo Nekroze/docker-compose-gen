@@ -17,6 +17,7 @@ package cmd
 
 import (
 	"fmt"
+	"io/ioutil"
 
 	compose "github.com/docker/libcompose/config"
 	composeyml "github.com/docker/libcompose/yaml"
@@ -39,7 +40,24 @@ Can be used to generate networks, helpful for dynamically replacing the default 
 		if err != nil {
 			panic(err)
 		}
-		fmt.Print(string(output))
+		if writeToStdout {
+			fmt.Print(string(output))
+			return
+		}
+		tmpfile, err := ioutil.TempFile("", "docker-compose.gen.*.yaml")
+		if err != nil {
+			panic(err)
+		}
+		if _, e := tmpfile.Write(output); e != nil {
+			panic(err)
+		}
+		if e := tmpfile.Chmod(0664); e != nil {
+			panic(err)
+		}
+		fmt.Print(tmpfile.Name())
+		if e := tmpfile.Close(); e != nil {
+			panic(err)
+		}
 	},
 }
 
