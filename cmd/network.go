@@ -16,14 +16,9 @@
 package cmd
 
 import (
-	"fmt"
-	"io/ioutil"
-
 	compose "github.com/docker/libcompose/config"
 	composeyml "github.com/docker/libcompose/yaml"
 	"github.com/spf13/cobra"
-
-	"gopkg.in/yaml.v2"
 )
 
 var networkExternalName string
@@ -36,33 +31,11 @@ var networkCmd = &cobra.Command{
 	Long: `Generate a network block.
 Can be used to generate networks, helpful for dynamically replacing the default network.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		output, err := yaml.Marshal(generateConfig())
-		if err != nil {
-			panic(err)
-		}
-		if writeToStdout {
-			fmt.Print(string(output))
-			return
-		}
-		tmpfile, err := ioutil.TempFile("", "docker-compose.gen.*.yaml")
-		if err != nil {
-			panic(err)
-		}
-		if _, e := tmpfile.Write(output); e != nil {
-			panic(err)
-		}
-		if e := tmpfile.Chmod(0664); e != nil {
-			panic(err)
-		}
-		fmt.Print(tmpfile.Name())
-		if e := tmpfile.Close(); e != nil {
-			panic(err)
-		}
+		outputConfig(generateConfig())
 	},
 }
 
 func generateConfig() (out compose.Config) {
-	out.Version = composeVersion
 	if (networkExternalName == "" && networkName != "default") || networkExternalName != "" {
 		out.Networks = map[string]interface{}{
 			networkName: generateNetworkConfig(),
