@@ -2,17 +2,15 @@ version: '3.4'
 
 services:
 
-  gen:
+  instance:
     image: 'nekroze/docker-compose-gen:latest'
     build:
-      context: .
+      context: ../
       target: final
     container_name: 'docker-compose-gen'
-    volumes:
-      - /tmp:/tmp
 
   tests:
     image: 'nekroze/docker-compose-gen:test'
     build:
-      context: .
+      context: ../
       target: test

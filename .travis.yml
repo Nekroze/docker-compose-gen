@@ -8,4 +8,4 @@ git:
 services:
   - docker
 
-script: ./test.sh
+script: ./testing/run.sh
